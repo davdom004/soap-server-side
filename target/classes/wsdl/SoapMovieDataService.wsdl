@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="Movie" targetNamespace="prog4.beadando.ws.soap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="prog4.beadando.ws.soap" xmlns:ns1="http://ws.beadando.prog4/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:import namespace="http://ws.beadando.prog4/" location="MovieDataService.wsdl">
+    </wsdl:import>
+  <wsdl:binding name="MovieSoapBinding" type="ns1:MovieDataService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getMovieData">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getMovieData">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getMovieDataResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Movie">
+    <wsdl:port name="SoapMovieDataServicePort" binding="tns:MovieSoapBinding">
+      <soap:address location="http://localhost:8081/ws_side_war/ws/movie"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
